@@ -55,5 +55,10 @@ namespace proiectIP
                 pictureBoxQRCode.Image = new Bitmap(qrCodeImage);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

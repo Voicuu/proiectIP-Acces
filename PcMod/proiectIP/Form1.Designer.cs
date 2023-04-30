@@ -35,6 +35,7 @@
             this.oraCurenta = new System.Windows.Forms.Label();
             this.timerOraCurenta = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -48,12 +49,12 @@
             this.btnDenyAcces = new System.Windows.Forms.Button();
             this.btnLogs = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDisconnectPortar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pbBackground
@@ -107,6 +108,15 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalii poartă:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox2.Location = new System.Drawing.Point(9, 93);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(175, 98);
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
             // 
             // label6
             // 
@@ -210,7 +220,7 @@
             this.btnDenyAcces.BackColor = System.Drawing.Color.Red;
             this.btnDenyAcces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDenyAcces.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDenyAcces.Location = new System.Drawing.Point(615, 356);
+            this.btnDenyAcces.Location = new System.Drawing.Point(156, 356);
             this.btnDenyAcces.Name = "btnDenyAcces";
             this.btnDenyAcces.Size = new System.Drawing.Size(125, 43);
             this.btnDenyAcces.TabIndex = 7;
@@ -231,14 +241,14 @@
             this.btnLogs.UseVisualStyleBackColor = false;
             this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
             // 
-            // pictureBox2
+            // btnDisconnectPortar
             // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox2.Location = new System.Drawing.Point(9, 93);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(175, 98);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
+            this.btnDisconnectPortar.Location = new System.Drawing.Point(670, 399);
+            this.btnDisconnectPortar.Name = "btnDisconnectPortar";
+            this.btnDisconnectPortar.Size = new System.Drawing.Size(87, 23);
+            this.btnDisconnectPortar.TabIndex = 9;
+            this.btnDisconnectPortar.Text = "Deconectare";
+            this.btnDisconnectPortar.UseVisualStyleBackColor = true;
             // 
             // mainPage
             // 
@@ -246,6 +256,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(769, 434);
+            this.Controls.Add(this.btnDisconnectPortar);
             this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.btnDenyAcces);
             this.Controls.Add(this.groupBox1);
@@ -263,10 +274,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,6 +304,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnDisconnectPortar;
     }
 }
 
