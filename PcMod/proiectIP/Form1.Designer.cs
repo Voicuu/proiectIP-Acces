@@ -270,6 +270,7 @@
             this.btnDisconnectPortar.TabIndex = 9;
             this.btnDisconnectPortar.Text = "Deconectare";
             this.btnDisconnectPortar.UseVisualStyleBackColor = true;
+            this.btnDisconnectPortar.Click += new System.EventHandler(this.btnDisconnectPortar_Click);
             // 
             // mainPage
             // 

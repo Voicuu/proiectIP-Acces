@@ -136,5 +136,10 @@ namespace proiectIP
             //_serialPort.Close();
             base.OnFormClosing(e);
         }
+
+        private void btnDisconnectPortar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
