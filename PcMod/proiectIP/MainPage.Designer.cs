@@ -1,6 +1,6 @@
 ﻿namespace proiectIP
 {
-    partial class mainPage
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.pbBackground = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.oraCurenta = new System.Windows.Forms.Label();
@@ -39,22 +39,21 @@
             this.labelGateState = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelWay = new System.Windows.Forms.Label();
+            this.labelCarNr = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.pictureBoxEmployeePicture = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDenyAcces = new System.Windows.Forms.Button();
             this.btnLogs = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnDisconnectPortar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGate)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployeePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // pbBackground
@@ -66,7 +65,7 @@
             this.pbBackground.Location = new System.Drawing.Point(-13, -5);
             this.pbBackground.Margin = new System.Windows.Forms.Padding(4);
             this.pbBackground.Name = "pbBackground";
-            this.pbBackground.Size = new System.Drawing.Size(1043, 542);
+            this.pbBackground.Size = new System.Drawing.Size(1043, 520);
             this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBackground.TabIndex = 0;
             this.pbBackground.TabStop = false;
@@ -98,7 +97,7 @@
             // timerOraCurenta
             // 
             this.timerOraCurenta.Enabled = true;
-            this.timerOraCurenta.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerOraCurenta.Tick += new System.EventHandler(this.timerOraCurenta_Tick);
             // 
             // groupBox2
             // 
@@ -147,10 +146,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.labelWay);
+            this.groupBox1.Controls.Add(this.labelCarNr);
+            this.groupBox1.Controls.Add(this.labelName);
+            this.groupBox1.Controls.Add(this.pictureBoxEmployeePicture);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -163,45 +162,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalii angajat:";
             // 
-            // label9
+            // labelWay
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(68, 202);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 16);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "label9";
+            this.labelWay.AutoSize = true;
+            this.labelWay.Location = new System.Drawing.Point(68, 202);
+            this.labelWay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWay.Name = "labelWay";
+            this.labelWay.Size = new System.Drawing.Size(44, 16);
+            this.labelWay.TabIndex = 15;
+            this.labelWay.Text = "label9";
             // 
-            // label8
+            // labelCarNr
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(140, 153);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "label8";
+            this.labelCarNr.AutoSize = true;
+            this.labelCarNr.Location = new System.Drawing.Point(140, 153);
+            this.labelCarNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCarNr.Name = "labelCarNr";
+            this.labelCarNr.Size = new System.Drawing.Size(44, 16);
+            this.labelCarNr.TabIndex = 14;
+            this.labelCarNr.Text = "label8";
             // 
-            // label7
+            // labelName
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(76, 103);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 16);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "label7";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(76, 103);
+            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(44, 16);
+            this.labelName.TabIndex = 13;
+            this.labelName.Text = "label7";
             // 
-            // pictureBox1
+            // pictureBoxEmployeePicture
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(300, 103);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 117);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxEmployeePicture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxEmployeePicture.Location = new System.Drawing.Point(300, 103);
+            this.pictureBoxEmployeePicture.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxEmployeePicture.Name = "pictureBoxEmployeePicture";
+            this.pictureBoxEmployeePicture.Size = new System.Drawing.Size(133, 117);
+            this.pictureBoxEmployeePicture.TabIndex = 12;
+            this.pictureBoxEmployeePicture.TabStop = false;
             // 
             // label4
             // 
@@ -263,21 +262,21 @@
             // 
             // btnDisconnectPortar
             // 
-            this.btnDisconnectPortar.Location = new System.Drawing.Point(893, 491);
+            this.btnDisconnectPortar.Location = new System.Drawing.Point(856, 438);
             this.btnDisconnectPortar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDisconnectPortar.Name = "btnDisconnectPortar";
-            this.btnDisconnectPortar.Size = new System.Drawing.Size(116, 28);
+            this.btnDisconnectPortar.Size = new System.Drawing.Size(156, 53);
             this.btnDisconnectPortar.TabIndex = 9;
             this.btnDisconnectPortar.Text = "Deconectare";
             this.btnDisconnectPortar.UseVisualStyleBackColor = true;
             this.btnDisconnectPortar.Click += new System.EventHandler(this.btnDisconnectPortar_Click);
             // 
-            // mainPage
+            // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1025, 534);
+            this.ClientSize = new System.Drawing.Size(1025, 512);
             this.Controls.Add(this.btnDisconnectPortar);
             this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.btnDenyAcces);
@@ -289,18 +288,18 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
-            this.Name = "mainPage";
+            this.Name = "MainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Page";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainPage_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.mainPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGate)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployeePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,7 +313,7 @@
         private System.Windows.Forms.Timer timerOraCurenta;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxEmployeePicture;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -322,10 +321,9 @@
         private System.Windows.Forms.Button btnLogs;
         private System.Windows.Forms.Label labelGateState;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelWay;
+        private System.Windows.Forms.Label labelCarNr;
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.PictureBox pictureBoxGate;
         private System.Windows.Forms.Button btnDisconnectPortar;
     }

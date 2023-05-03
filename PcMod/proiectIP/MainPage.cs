@@ -14,11 +14,11 @@ using System.Windows.Forms;
 namespace proiectIP
 {
 
-    public partial class mainPage : Form
+    public partial class MainPage : Form
     {
         //private SerialPort _serialPort;
         private Timer _timer;
-    public mainPage()
+    public MainPage()
         {
             InitializeComponent();
             //InitializeSerialPort();
@@ -100,15 +100,10 @@ namespace proiectIP
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void mainPage_Load(object sender, EventArgs e)
         {
             timerOraCurenta.Enabled = true;
 
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            oraCurenta.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void btnDenyAcces_Click(object sender, EventArgs e)
@@ -140,6 +135,11 @@ namespace proiectIP
         private void btnDisconnectPortar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void timerOraCurenta_Tick(object sender, EventArgs e)
+        {
+            oraCurenta.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

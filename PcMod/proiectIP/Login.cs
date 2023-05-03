@@ -18,20 +18,22 @@ namespace proiectIP
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if(comboBox1.Text=="PORTAR")
+            if(comboBoxFunctie.Text=="PORTAR")
             {
-                mainPage mp = new mainPage();
+                MainPage mp = new MainPage();
                 this.Hide();
                 mp.Show();
                 
-            }else if(comboBox1.Text=="HR")
+            }else if(comboBoxFunctie.Text=="HR")
             {
-                HR_Platform hr = new HR_Platform();
+                HRPlatform hr = new HRPlatform();
                 this.Hide();
                 hr.Show();
             }
         }
+
+        
     }
 }

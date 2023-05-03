@@ -12,15 +12,14 @@ using QRCoder;
 
 namespace proiectIP
 {
-    public partial class HR_Platform : Form
+    public partial class HRPlatform : Form
     {
-        public HR_Platform()
+        public HRPlatform()
         {
             InitializeComponent();
         }
 
-
-        private void HR_Platform_FormClosing(object sender, FormClosingEventArgs e)
+        private void HRPlatform_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
@@ -30,7 +29,7 @@ namespace proiectIP
             }
         }
 
-        private void HR_Platform_Load(object sender, EventArgs e)
+        private void HRPlatform_Load(object sender, EventArgs e)
         {
 
         }
@@ -59,6 +58,11 @@ namespace proiectIP
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDisconnectHR_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
