@@ -125,7 +125,7 @@ namespace proiectIP
                 string imageUrl = await UploadImageToFirebaseStorage(selectedImageData, fileName);
 
                 // Create a new Employee object with the data from the TextBoxes and the image URL
-                Angajati angajatNou = new Angajati
+                Angajat angajatNou = new()
                 {
                     CNP = textBoxCNP.Text,
                     Nume = textBoxName.Text,

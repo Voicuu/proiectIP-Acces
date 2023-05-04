@@ -215,7 +215,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Angajati.cs" />
+    <Compile Include="Angajat.cs" />
     <Compile Include="FirebaseConfig.cs" />
     <Compile Include="MainPage.cs">
       <SubType>Form</SubType>

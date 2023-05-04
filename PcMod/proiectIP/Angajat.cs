@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace proiectIP
 {
-    public class Angajati
+    public class Angajat
     {
         public string CNP { get; set; }
         public string CodSecuritate { get; set; }
