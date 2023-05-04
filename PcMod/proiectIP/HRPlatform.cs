@@ -52,6 +52,9 @@ namespace proiectIP
             // Introdu mesajul pe care dorești să-l codifici în QR code
             string message = "https://facebook.com";
 
+            // Adaugă un timestamp la mesaj pentru a genera un cod QR unic de fiecare dată
+            message += DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
             // Generează datele QR code-ului
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(message, QRCodeGenerator.ECCLevel.Q);
 
@@ -140,7 +143,7 @@ namespace proiectIP
 
                 // Save the new Employee object to the Firebase Realtime Database
                 var firebaseClient = FirebaseConfig.GetFirebaseClient();
-                await firebaseClient.Child("Angajati").Child(angajatNou.CNP).PutAsync(angajatNou);
+                await firebaseClient.Child("Angajati").Child(angajatNou.Nume).PutAsync(angajatNou);
 
 
                 MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);

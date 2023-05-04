@@ -49,6 +49,7 @@
             // 
             // comboBoxFunctie
             // 
+            this.comboBoxFunctie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFunctie.FormattingEnabled = true;
             this.comboBoxFunctie.Items.AddRange(new object[] {
             "HR",
@@ -94,6 +95,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(132, 22);
             this.textBoxPassword.TabIndex = 5;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogin
             // 
