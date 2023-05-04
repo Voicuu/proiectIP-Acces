@@ -34,6 +34,14 @@ namespace proiectIP
             }
         }
 
-        
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // The user clicked the "X" close button
+                // Add code to save any unsaved data here if needed
+                Application.Exit();
+            }
+        }
     }
 }

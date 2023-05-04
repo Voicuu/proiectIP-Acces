@@ -320,7 +320,7 @@
             this.buttonAddEmployee.TabIndex = 4;
             this.buttonAddEmployee.Text = "Adauga";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
             // 
             // btnDisconnectHR
             // 

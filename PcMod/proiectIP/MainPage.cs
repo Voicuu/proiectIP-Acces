@@ -134,7 +134,9 @@ namespace proiectIP
 
         private void btnDisconnectPortar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
 
         private void timerOraCurenta_Tick(object sender, EventArgs e)

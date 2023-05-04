@@ -58,14 +58,16 @@ namespace proiectIP
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDisconnectHR_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
 
         private byte[] selectedImageData;
@@ -98,5 +100,7 @@ namespace proiectIP
         {
             oraCurenta2.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        
     }
 }

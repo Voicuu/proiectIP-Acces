@@ -54,7 +54,7 @@
             "HR",
             "PORTAR"});
             this.comboBoxFunctie.Location = new System.Drawing.Point(153, 108);
-            this.comboBoxFunctie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxFunctie.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFunctie.Name = "comboBoxFunctie";
             this.comboBoxFunctie.Size = new System.Drawing.Size(132, 24);
             this.comboBoxFunctie.TabIndex = 1;
@@ -82,7 +82,7 @@
             // textBoxUserName
             // 
             this.textBoxUserName.Location = new System.Drawing.Point(153, 161);
-            this.textBoxUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUserName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(132, 22);
             this.textBoxUserName.TabIndex = 4;
@@ -90,7 +90,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(153, 220);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(132, 22);
             this.textBoxPassword.TabIndex = 5;
@@ -98,7 +98,7 @@
             // buttonLogin
             // 
             this.buttonLogin.Location = new System.Drawing.Point(137, 289);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(100, 33);
             this.buttonLogin.TabIndex = 6;
@@ -118,10 +118,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxFunctie);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
