@@ -102,6 +102,14 @@ namespace proiectIP
                 }
             }
         }
+        private void ShowProgressBar()
+        {
+            using (ProgressBarForm progressBarForm = new ProgressBarForm())
+            {
+                progressBarForm.ShowDialog();
+            }
+        }
+
 
         private async void buttonAddEmployee_Click(object sender, EventArgs e)
         {
@@ -121,30 +129,36 @@ namespace proiectIP
                 return;
             }
 
+            ProgressBarForm progressBarForm = new ProgressBarForm();
+            progressBarForm.Show();
+            this.Enabled = false;
+
             try
             {
-                // Upload the image to Firebase Storage and get the download URL
-                string fileName = $"{Guid.NewGuid().ToString()}.png";
-                string imageUrl = await UploadImageToFirebaseStorage(selectedImageData, fileName);
-
-                // Create a new Employee object with the data from the TextBoxes and the image URL
-                Angajat angajatNou = new()
+                await Task.Run(async () =>
                 {
-                    CNP = textBoxCNP.Text,
-                    Nume = textBoxName.Text,
-                    NrLegitimatie = textBoxNrLegimitatie.Text,
-                    Divizia = textBoxDivizie.Text,
-                    CodSecuritate = textBoxSecurityCode.Text,
-                    NrMasina = textBoxCarNr.Text,
-                    DreptAcces = int.Parse(textBoxAccesRights.Text),
-                    Email = textBoxEmail.Text,
-                    Poza = imageUrl
-                };
+                    // Upload the image to Firebase Storage and get the download URL
+                    string fileName = $"{Guid.NewGuid().ToString()}.png";
+                    string imageUrl = await UploadImageToFirebaseStorage(selectedImageData, fileName);
 
-                // Save the new Employee object to the Firebase Realtime Database
-                var firebaseClient = FirebaseConfig.GetFirebaseClient();
-                await firebaseClient.Child("Angajati").Child(angajatNou.Nume).PutAsync(angajatNou);
+                    // Create a new Employee object with the data from the TextBoxes and the image URL
+                    Angajat angajatNou = new()
+                    {
+                        CNP = textBoxCNP.Text,
+                        Nume = textBoxName.Text,
+                        NrLegitimatie = textBoxNrLegimitatie.Text,
+                        Divizia = textBoxDivizie.Text,
+                        CodSecuritate = textBoxSecurityCode.Text,
+                        NrMasina = textBoxCarNr.Text,
+                        DreptAcces = int.Parse(textBoxAccesRights.Text),
+                        Email = textBoxEmail.Text,
+                        Poza = imageUrl
+                    };
 
+                    // Save the new Employee object to the Firebase Realtime Database
+                    var firebaseClient = FirebaseConfig.GetFirebaseClient();
+                    await firebaseClient.Child("Angajati").Child(angajatNou.Nume).PutAsync(angajatNou);
+                });
 
                 MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -152,7 +166,14 @@ namespace proiectIP
             {
                 MessageBox.Show($"An error occurred while uploading the image:\n{ex.Message}\n\n{ex.StackTrace}");
             }
+            finally
+            {
+                progressBarForm.Close();
+                this.Enabled = true;
+                this.Activate();
+            }
         }
+
 
         private async Task<string> UploadImageToFirebaseStorage(byte[] imageData, string fileName)
         {

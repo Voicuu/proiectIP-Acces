@@ -20,50 +20,6 @@ namespace proiectIP
             
         }
 
-        /*private async void buttonLogin_Click(object sender, EventArgs e)
-        {
-            string userName = textBoxUserName.Text;
-            string password = textBoxPassword.Text;
-            bool userFound = true;
-
-            // Initialize a Firebase client with your Firebase Realtime Database URL
-            FirebaseClient firebaseClient = FirebaseConfig.GetFirebaseClient();
-
-            // Query the database using the Child, OrderByChild, and EqualTo methods
-            IEnumerable<FirebaseObject<Angajat>> queryResult = await firebaseClient
-                .Child("Angajati") // Replace with the actual path in your database
-                .OnceAsync<Angajat>(); // Specify the type of object you expect to receive
-
-            // Access the queried data from the query result
-            foreach (FirebaseObject<Angajat> result in queryResult)
-            {
-                Angajat ang = result.Object;
-                
-                if(ang.Nume == userName && ang.CodSecuritate == password)
-                {
-                    userFound = true;
-                }
-            }
-
-            if (comboBoxFunctie.Text=="PORTAR" && userFound)
-            {
-                MainPage mp = new MainPage();
-                this.Hide();
-                mp.Show();
-                
-            }
-            else if(comboBoxFunctie.Text=="HR" && userFound)
-            {
-                HRPlatform hr = new HRPlatform();
-                this.Hide();
-                hr.Show();
-            }
-            else
-            {
-                MessageBox.Show("Username sau parola incorecta!", "Eroare!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
-
         private async Task<bool> AuthenticateUser(string role, string username, string password)
         {
             // Get the data from the Firebase Realtime Database using your FirebaseConfig class
@@ -104,7 +60,7 @@ namespace proiectIP
                     hrForm.Show();
                     this.Hide();
                 }
-                else if (role == "Portar")
+                else if (role == "PORTAR")
                 {
                     // Open Portar form
                     MainPage portarForm = new MainPage();
