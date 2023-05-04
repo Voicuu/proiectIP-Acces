@@ -60,7 +60,7 @@ namespace proiectIP
                     hrForm.Show();
                     this.Hide();
                 }
-                else if (role == "PORTAR")
+                else if (role == "Portar")
                 {
                     // Open Portar form
                     MainPage portarForm = new MainPage();

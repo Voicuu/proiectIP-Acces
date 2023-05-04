@@ -53,7 +53,7 @@
             this.comboBoxFunctie.FormattingEnabled = true;
             this.comboBoxFunctie.Items.AddRange(new object[] {
             "HR",
-            "PORTAR"});
+            "Portar"});
             this.comboBoxFunctie.Location = new System.Drawing.Point(153, 108);
             this.comboBoxFunctie.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFunctie.Name = "comboBoxFunctie";
