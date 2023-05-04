@@ -1,0 +1,6 @@
+
+Dependinte ce trebuiesc instalate:
+
+npm install -g react-native-cli
+npm install --global expo-cli
+npm install react-native-imei --save   //pentru codul  IMEI
