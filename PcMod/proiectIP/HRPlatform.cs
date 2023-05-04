@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QRCoder;
-
+using Firebase.Database;
+using Firebase.Storage;
+using Firebase.Database.Query;
 
 namespace proiectIP
 {
@@ -37,6 +39,11 @@ namespace proiectIP
             timerOraCurenta2.Enabled = true;
         }
 
+        private void timerOraCurenta2_Tick(object sender, EventArgs e)
+        {
+            oraCurenta2.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
         private void buttonGenerateQRCode_Click(object sender, EventArgs e)
         {
             // Creează o instanță a generatorului de coduri QR
@@ -58,10 +65,7 @@ namespace proiectIP
             }
         }
 
-        private void buttonAddEmployee_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+
 
         private void btnDisconnectHR_Click(object sender, EventArgs e)
         {
@@ -96,10 +100,68 @@ namespace proiectIP
             }
         }
 
-        private void timerOraCurenta2_Tick(object sender, EventArgs e)
+        private async void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            oraCurenta2.Text = DateTime.Now.ToString("HH:mm:ss");
+            // Check if all the required fields are completed and the CNP has 13 characters
+            if (string.IsNullOrEmpty(textBoxCNP.Text) || textBoxCNP.Text.Length != 13 ||
+                string.IsNullOrEmpty(textBoxSecurityCode.Text) ||
+                string.IsNullOrEmpty(textBoxDivizie.Text) ||
+                string.IsNullOrEmpty(textBoxAccesRights.Text) ||
+                string.IsNullOrEmpty(textBoxEmail.Text) ||
+                string.IsNullOrEmpty(textBoxNrLegimitatie.Text) ||
+                string.IsNullOrEmpty(textBoxCarNr.Text) ||
+                string.IsNullOrEmpty(textBoxName.Text) ||
+                pictureBoxPoza.Image == null)
+            {
+                MessageBox.Show("Vă rugăm să completați toate câmpurile obligatorii și să vă asigurați că CNP-ul are 13 caractere."
+                    , "Atentie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Upload the image to Firebase Storage and get the download URL
+                string fileName = $"{Guid.NewGuid().ToString()}.png";
+                string imageUrl = await UploadImageToFirebaseStorage(selectedImageData, fileName);
+
+                // Create a new Employee object with the data from the TextBoxes and the image URL
+                Angajati angajatNou = new Angajati
+                {
+                    CNP = textBoxCNP.Text,
+                    Nume = textBoxName.Text,
+                    NrLegitimatie = textBoxNrLegimitatie.Text,
+                    Divizia = textBoxDivizie.Text,
+                    CodSecuritate = textBoxSecurityCode.Text,
+                    NrMasina = textBoxCarNr.Text,
+                    DreptAcces = int.Parse(textBoxAccesRights.Text),
+                    Email = textBoxEmail.Text,
+                    Poza = imageUrl
+                };
+
+                // Save the new Employee object to the Firebase Realtime Database
+                var firebaseClient = FirebaseConfig.GetFirebaseClient();
+                await firebaseClient.Child("Angajati").Child(angajatNou.CNP).PutAsync(angajatNou);
+
+
+                MessageBox.Show("Angajatul a fost adaugat!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Firebase.Storage.FirebaseStorageException ex)
+            {
+                MessageBox.Show($"An error occurred while uploading the image:\n{ex.Message}\n\n{ex.StackTrace}");
+            }
         }
+
+        private async Task<string> UploadImageToFirebaseStorage(byte[] imageData, string fileName)
+        {
+            var firebaseStorage = new FirebaseStorage("acces-ff85a.appspot.com");
+            var storageReference = firebaseStorage.Child("images").Child(fileName);
+            using (var memoryStream = new MemoryStream(imageData))
+            {
+                await storageReference.PutAsync(memoryStream);
+            }
+            return await storageReference.GetDownloadUrlAsync();
+        }
+
 
         
     }
