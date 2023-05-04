@@ -4,6 +4,7 @@ import React from 'react'
 import Logo from '../../../assets/images/logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import HRButton from '../../components/HRButton/HRButton';
 const SignInScreen = () => {
     const {height}=useWindowDimensions();
   return (
@@ -12,6 +13,7 @@ const SignInScreen = () => {
 
       <CustomInput style={styles.input}/>
       <CustomButton style= {styles.button}/>
+      <HRButton style={styles.button}/>
 
     </View>
   );
@@ -22,6 +24,7 @@ const styles = StyleSheet.create({
       width:'100%',
       flex: 1,
       alignItems: 'center',
+     
       
      
      ///justifyContent: 'center',
