@@ -12,12 +12,12 @@ const HRButton = () => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 0,
-        left: 0,
+        
+        right: 0,
         backgroundColor: 'black',
-        width: '100%',
-        padding: 15,
-        marginVertical: 10,
+        width: '30%',
+        padding: 5,
+       
     },
     text: {
         textAlign:'center',

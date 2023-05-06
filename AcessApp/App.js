@@ -1,18 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
-
-
-
-
+import { loadFonts } from './fonts';
 
 export default function App() {
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
   return (
     <View style={styles.container}>   
         <SignInScreen/> 
         {/* componenta de sign in este randata aici */}
           
-      <StatusBar style="auto" />
+      
     </View>
   );
 }
@@ -33,11 +34,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 24,
     fontWeight: '600',
     marginBottom: 10,
   },
   subTitle: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 16,
     fontWeight: '400',
     color: '#555',
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   input: {
+    fontFamily: 'Poppins-Regular',
     backgroundColor: '#fff',
     borderRadius: 5,
     height: 50,
@@ -63,6 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
+    fontFamily: 'Poppins-Regular',
     color: '#fff',
     fontSize: 18,
     fontWeight: '600',
