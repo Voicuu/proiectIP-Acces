@@ -4,3 +4,12 @@ Dependinte ce trebuiesc instalate:
 npm install -g react-native-cli
 npm install --global expo-cli
 npm install react-native-imei --save   //pentru codul  IMEI
+
+npm i --save @fortawesome/react-native-fontawesome @fortawesome/fontawesome-svg-core react-native-svg
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+
+npx expo install react-native-svg@13.4.0
+
+npm install expo-font
