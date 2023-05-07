@@ -10,6 +10,6 @@ npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-brands-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 
-npx expo install react-native-svg@13.4.0
+npx expo install react-native-svg@13.4.0 //trebuie sa dea eroare
 
 npm install expo-font
