@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
 import { loadFonts } from './fonts';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HRScreen from './src/screens/HRScreen/HRScreen'
+
+const Stack = createStackNavigator();
+
 
 export default function App() {
   useEffect(() => {
@@ -9,12 +15,17 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>   
-        <SignInScreen/> 
+    <NavigationContainer>
+    
+    
+    <View style={styles.container}> 
+        <HRScreen/>
+        {/* <SignInScreen/>  */}
         {/* componenta de sign in este randata aici */}
-          
-      
     </View>
+
+    
+    </NavigationContainer>
   );
 }
 

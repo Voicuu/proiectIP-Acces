@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet,useWindowDimensions} from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions, TouchableOpacity } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import React from 'react'
 import Logo from '../../../assets/images/logo.png';
@@ -6,20 +6,24 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import HRButton from '../../components/HRButton/HRButton';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-
 import HRIcon from '../../components/HRIcon/HRIcon';
+import HRScreen from '../HRScreen/HRScreen'
+import { useNavigation } from '@react-navigation/native';
+
 const SignInScreen = () => {
-    const {height}=useWindowDimensions();
+  const {height}=useWindowDimensions();
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      {/* <HRButton style={styles.button}/> */}
       <HRIcon></HRIcon>
       <Image source={Logo} style={[styles.logo,{height:height * 0.3}]}  />
-      
       <Text style={styles.text}>Acces Poarta</Text>
-
       <CustomInput style={styles.input}/>
-     
+      <TouchableOpacity onPress={() => navigation.navigate('HRScreen')}>
+        <Text>Muie</Text>
+      </TouchableOpacity>
+
       <CustomButton style= {styles.button}/>
       <FontAwesomeIcon icon={faCircleInfo}></FontAwesomeIcon>
       <Text style={styles.info}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Text>
@@ -45,7 +49,6 @@ const styles = StyleSheet.create({
   input: {
       flex: 1,
       width: '100%',
-      
   },
   button: {
       flex: 1,
@@ -68,8 +71,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     color:'grey',
     textShadowRadius: 2,
-  },
-  
+  },  
 });
 
-export default SignInScreen
+export default SignInScreen;
