@@ -10,4 +10,5 @@ importing react-native-device-info succeeded
 (npm install react-native-device-info required)
 
 implemented the functionality of signing and generating the IMEI code.
+
 interfaces needs to be done.
