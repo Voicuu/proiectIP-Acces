@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { Alert } from 'react-native';
-
-
-
+import React from 'react';
+import SecondScreen from './android/app/src/screens/SecondScreen/SecondScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignInScreen from './android/app/src/screens/SignInScreen/SignInScreen';
 interface SignInProps {
   onSignIn: (imei: string) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
   const [imei, setImei] = useState('');
-
+  const Stack = createNativeStackNavigator();
+  
   const handleSignIn = () => {
     // validate IMEI input and pass it to the onSignIn callback
     if (imei.length === 15) {
       onSignIn(imei);
     } else {
-      Alert.alert('IMEI Code','Please enter a valid 15-digit IMEI code.');
+      Alert.alert('IMEI  Code','Please enter a valid 15-digit IMEI code.');
     }
   };
 
@@ -32,21 +35,14 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
   // sign in code to be implemented using the imei codeW
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Enter your IMEI code:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="15-digit IMEI code"
-        maxLength={15}
-        keyboardType="numeric"
-        onChangeText={setImei}
-        value={imei}
-      />
-      <View style={styles.buttonContainer}>
-        <Button title="Sign In" onPress={handleSignIn} />
-        <Button title="Generate IMEI" onPress={handleGenerateImei} />
-      </View>
-    </View>
+    
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={SignInScreen} />
+      
+        <Stack.Screen name="Second" component={SecondScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
