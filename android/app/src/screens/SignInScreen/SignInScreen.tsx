@@ -14,7 +14,7 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
     if (imei.length === 16) { //nu e buna conditia pentru imei si nu ajunge pe navigation (schimbata din 15 in 16)
       // Call the onSignIn callback from the parent component or perform sign-in logic here
       console.log('Signed in with IMEI:', imei);
-      navigation.navigate('Second'); // Replace 'AnotherScreen' with the name of the screen you want to navigate to
+      navigation.navigate('Options'); // Replace 'AnotherScreen' with the name of the screen you want to navigate to
     } else {
       Alert.alert('IMEI Code', 'Please enter a valid 15-digit IMEI code.');
     }

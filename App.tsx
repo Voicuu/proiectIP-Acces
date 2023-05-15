@@ -7,6 +7,8 @@ import SecondScreen from './android/app/src/screens/SecondScreen/SecondScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignInScreen from './android/app/src/screens/SignInScreen/SignInScreen';
+import SelectableScreen from './android/app/src/screens/SelectableScreen/SelectableScreen';
+
 interface SignInProps {
   onSignIn: (imei: string) => void;
 }
@@ -40,7 +42,9 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={SignInScreen} />
       
-        <Stack.Screen name="Second" component={SecondScreen} />
+        <Stack.Screen name="Options" component={SelectableScreen} />
+
+        <Stack.Screen name="Details" component={SecondScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
