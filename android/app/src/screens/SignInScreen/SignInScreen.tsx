@@ -27,9 +27,9 @@ const database = getDatabase(app)
 
 export const todosRef = ref(database, "todos")
 
-// eu mi am pus google accountul aici
-const email: string  = 'your google address';
-const password: string = 'pw';
+// un cont random
+const email: string  = 'andreicapac2222@gmail.com';
+const password: string = 'password123';
 
 interface SignInScreenProps {
   navigation: NavigationProp<any>;
@@ -80,11 +80,13 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
           // Retrieve the user's IMEI code from Realtime Database
 
           const database = firebase.database();
-          const userRef = database.ref(`users/${userId}`);
+          //const userRef = database.ref(`users/${userId}`);
+          const userRef = database.ref(`Angajati/marian`);
           userRef.once('value', (snapshot) => {
             const userData = snapshot.val();
             const firebaseImeiCode = userData?.imei; // aici trebuie umblat, trebuie sa preluam datele din firebase 
             console.log('Firebase IMEI:', firebaseImeiCode);
+            console.log('Phone    IMEI:', imei);
             if (firebaseImeiCode === imei) {
               console.log('IMEI codes match');
               console.log('Signed in with IMEI:', imei);
@@ -119,8 +121,8 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="15-digit IMEI code"
-        maxLength={15}
-        keyboardType="numeric"
+        maxLength={16}
+        keyboardType="default"
         onChangeText={setImei}
         value={imei}
       />
