@@ -1,7 +1,10 @@
 [23.05.2023]
+open this in code preview,
 npm install before running the project
 
-add the permissions to the AndroidManifest.xml file:<uses-permission android:name="android.permission.INTERNET"/>
+add the permissions to the AndroidManifest.xml file:
+
+<uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
