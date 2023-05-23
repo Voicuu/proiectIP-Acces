@@ -1,6 +1,6 @@
 [23.05.2023] 
 - implementation for getting other data and configuring the mobile interfaces. [TO DO]
-
+- implementation check for bluetooth connectivity. [TO DO]
 - implementation for getting the imei code from firebase realtime database and checking imei code[DONE]
 
 open this in code preview,
