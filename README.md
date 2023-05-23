@@ -1,4 +1,8 @@
-[23.05.2023]
+[23.05.2023] 
+- implementation for getting other data and configuring the mobile interfaces. [TO DO]
+
+- implementation for getting the imei code from firebase realtime database and checking imei code[DONE]
+- 
 open this in code preview,
 npm install before running the project
 
@@ -19,8 +23,6 @@ add the permissions to the AndroidManifest.xml file:
  LOG  Firebase: User signed in successfully!
  LOG  Firebase IMEI: undefined
  LOG  IMEI codes do not match
-
-implementation for getting data from firebase realtime database [to do]
 
 [09.05.2023]
 # proiectIP-Acces
