@@ -8,6 +8,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignInScreen from './android/app/src/screens/SignInScreen/SignInScreen';
 import SelectableScreen from './android/app/src/screens/SelectableScreen/SelectableScreen';
+import auth from '@react-native-firebase/auth';
+import { Database } from 'firebase/database';
+//import firebase from './firebase';
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/database'
+//import database from '@react-native-firebase/database';
 
 interface SignInProps {
   onSignIn: (imei: string) => void;
@@ -35,6 +41,28 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
   };
 
   // sign in code to be implemented using the imei codeW
+  // firebase example
+  
+  const retrieveImeiCode = async () => {
+    try {
+      // Retrieve the user's IMEI code from Realtime Database
+      const userId = 'andrj'; // Replace with the appropriate user ID
+      const userRef = firebase.database().ref(`users/${userId}`);
+      userRef.once('value', (snapshot) => {
+        const userData = snapshot.val();
+        const firebaseImeiCode = userData?.imeiCode;
+  
+        if (firebaseImeiCode === imei) {
+          console.log('IMEI codes match');
+        } else {
+          console.log('IMEI codes do not match');
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     
