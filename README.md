@@ -1,3 +1,28 @@
+[23.05.2023]
+open this in code preview,
+npm install before running the project
+
+add the permissions to the AndroidManifest.xml file:
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+1.write your google user/pw in code
+
+2.create user
+
+3.sign in
+
+4.you need to get these logs:
+
+ LOG  Firebase: User signed in successfully!
+ LOG  Firebase IMEI: undefined
+ LOG  IMEI codes do not match
+
+implementation for getting data from firebase realtime database [to do]
+
+[09.05.2023]
 # proiectIP-Acces
     "react": "18.2.0",
     "react-native": "0.71.7",
