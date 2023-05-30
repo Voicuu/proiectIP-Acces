@@ -78,7 +78,6 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
           {
             const userId = user.uid;
           // Retrieve the user's IMEI code from Realtime Database
-
           const database = firebase.database();
           //const userRef = database.ref(`users/${userId}`);
           const userRef = database.ref(`Angajati/marian`);
@@ -90,9 +89,11 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
             if (firebaseImeiCode === imei) {
               console.log('IMEI codes match');
               console.log('Signed in with IMEI:', imei);
+              Alert.alert('Success', `Signed in successfully using the IMEI\n${imei} !`);
               navigation.navigate('Options'); // Replace 'AnotherScreen' with the name of the screen you want to navigate to
             } else {
               console.log('IMEI codes do not match');
+              Alert.alert('Error', `IMEI Codes do not match!`);
             }
           });
         }else
@@ -112,7 +113,7 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
   const handleGenerateImei = async () => {
     const deviceImei = await DeviceInfo.getUniqueId();
     setImei(deviceImei);
-    Alert.alert('Success', `Generated IMEI code: ${deviceImei}`);
+    Alert.alert('IMEI Status', `Generated IMEI code: ${deviceImei}`);
   };
 
   return (
@@ -123,6 +124,7 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
         placeholder="15-digit IMEI code"
         maxLength={16}
         keyboardType="default"
+        editable={false}
         onChangeText={setImei}
         value={imei}
       />
