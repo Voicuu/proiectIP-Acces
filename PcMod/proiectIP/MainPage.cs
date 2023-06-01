@@ -18,7 +18,7 @@ namespace proiectIP
 
     public partial class MainPage : Form
     {
-        //private SerialPort _serialPort;
+        private SerialPort _serialPort;
         private Timer _timer;
         private Timer _timerDB;
         public SQLiteConnection sql_con;
@@ -28,8 +28,8 @@ namespace proiectIP
         public MainPage()
         {
             InitializeComponent();
-            //InitializeSerialPort();
-            InitializeTimer();
+            InitializeSerialPort();
+            //InitializeTimer();
             InitializeTimerDB();
             SetConnection();
             CreateTable();
@@ -57,20 +57,20 @@ namespace proiectIP
 
 
 
-        /*private void InitializeSerialPort()
+        private void InitializeSerialPort()
         {
-            _serialPort = new SerialPort("COM3", 9600); // Replace "COM3" with your Arduino's serial port
+            _serialPort = new SerialPort("COM3", 38400); // Replace "COM3" with your Arduino's serial port
             _serialPort.DataReceived += SerialPort_DataReceived;
             _serialPort.Open();
-        }*/
+        }
 
-        private void InitializeTimer()
+/*        private void InitializeTimer()
         {
             _timer = new Timer();
             _timer.Interval = 3000; // 3 seconds interval
             _timer.Tick += Timer_Tick;
             _timer.Start();
-        }
+        }*/
 
         private void RefreshLogsForm()
         {
@@ -112,7 +112,7 @@ namespace proiectIP
                     // Insert the new logs
                     foreach (var log in logs)
                     {
-                        
+
                         command.CommandText = $"INSERT INTO Logs VALUES ('{log.Object.CNP}', '{log.Object.DateTime}', '{log.Object.Direction}')";
                         command.ExecuteNonQuery();
                     }
@@ -133,11 +133,11 @@ namespace proiectIP
             UpdateUI(state);
         }
 
-        /*private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string data = _serialPort.ReadLine().Trim();
             Invoke(new Action(() => UpdateUI(data)));
-        }*/
+        }
 
         private void UpdateUI(string state)
         {
@@ -157,44 +157,35 @@ namespace proiectIP
             }
         }
 
-        // Add these fields inside the MainForm class
-        private BluetoothClient _bluetoothClient;
-        private Stream _stream;
-
-        // Add the ConnectToBluetoothDeviceAsync method inside the MainForm class
-        private async Task ConnectToBluetoothDeviceAsync(Guid serviceClassId)
-        {
-            _bluetoothClient = new BluetoothClient();
-            BluetoothDeviceInfo[] devices = _bluetoothClient.DiscoverDevices();
-            BluetoothDeviceInfo targetDevice = null;
-
-            foreach (var device in devices)
-            {
-                if (device.DeviceName == "YourDeviceName") // Replace with the name of your Bluetooth device
-                {
-                    targetDevice = device;
-                    break;
-                }
-            }
-
-            if (targetDevice != null)
-            {
-                await Task.Run(() => _bluetoothClient.Connect(targetDevice.DeviceAddress, serviceClassId));
-                _stream = _bluetoothClient.GetStream();
-            }
-        }
 
         private void mainPage_Load(object sender, EventArgs e)
         {
             timerOraCurenta.Enabled = true;
-            
+
 
         }
 
         private void btnDenyAcces_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Accesul a fost respins!","ACCES RESPINS",MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            try
+            {
+                if (_serialPort != null && _serialPort.IsOpen)
+                {
+                    _serialPort.Write("0");
+                    MessageBox.Show("Accesul a fost respins!", "ACCES RESPINS", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("The serial port is not open!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         public DataTable GetLogsFromDatabase()
         {
@@ -278,10 +269,10 @@ namespace proiectIP
                 Application.Exit();
             }
         }
-        
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            //_serialPort.Close();
+            _serialPort.Close();
             base.OnFormClosing(e);
         }
 
