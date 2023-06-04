@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
-
-const logo = require('C:/Users/andre/Projects/MobileApp/proiectIP-Acces/android/app/icons/logo.png');
-
-const SecondScreen = () => {
+import { TouchableOpacity,View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
+import DataScreen from '../DataScreen/DataScreen';
+import LogsScreen from '../LogsScreen/LogsScreen';
+const logo = require('../../../icons/logo.png');
+//@ts-ignore
+const SecondScreen = ( {navigation} ) => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
@@ -15,34 +16,34 @@ const SecondScreen = () => {
 
   const handleButton1Press = () => {
     // Handle button 1 press logic here
+    navigation.navigate('Logs');
   };
 
   const handleButton2Press = () => {
     // Handle button 2 press logic here
+    navigation.navigate('Data');
   };
 
   return (
     <View style={styles.container}>
-      <Image source={logo}></Image>
+      <Image source={logo} style={styles.logo}></Image>
       <Text style={styles.label}>Nume si prenume</Text>
       <TextInput
         style={styles.input1}
         value={input1}
         onChangeText={setInput1}
+        placeholder="Introduceti numele si prenumele"
       />
 
       {/* Repeat the above pattern for the remaining textboxes */}
 
       <View style={styles.buttonContainer}>
-        <Button
-          title="Logs" 
-          onPress={handleButton1Press}
-        />
-
-        <Button
-          title="Orar/Date ale utilizatorului/Stare poarta"
-          onPress={handleButton2Press}
-        />
+        <TouchableOpacity style={styles.button} onPress={handleButton1Press}>
+          <Text style={styles.buttonText}>Logs</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleButton2Press}>
+          <Text style={styles.buttonText}>Date Utilizator</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -52,44 +53,57 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#f8f8f8',
+    alignItems: 'center',
+  },
+  logo:
+  {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+    marginTop:10,
   },
   label: {
-    position: "absolute",
-    left:26,
-    top:164,
-    width:161,
+    alignSelf: 'center',
     color: "rgba(0,0,0,1)",
-    fontSize: 12,
-    letterSpacing: 0,
-    textAlign:"left",
-    fontStyle: "normal",
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 10,
+    
   },
   input1: {
-    position: "absolute",
-    fontSize: 12,
-    left: 16,
-    top: 185,
-    width: 323,
-    height: 33,
+    width: '100%',
+    height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 4,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    
   },
   buttonContainer: {
-    position: "absolute",
-    left: 53,
-    top:550,
-    width:102,
-    height:40,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    shadowOpacity:50,
-    gap:100,
-    marginTop: 16,
+    alignItems:'center',
+    
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    width: '100%',
+    marginTop: 20,
   },
+  button: {
+    backgroundColor: '#4682B4',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop:20,
+   
+    width: '90%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  
 });
 
 export default SecondScreen;

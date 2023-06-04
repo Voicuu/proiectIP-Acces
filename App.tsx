@@ -14,6 +14,8 @@ import { Database } from 'firebase/database';
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/database'
 //import database from '@react-native-firebase/database';
+import DataScreen from './android/app/src/screens/DataScreen/DataScreen';
+import LogsScreen from './android/app/src/screens/LogsScreen/LogsScreen';
 
 interface SignInProps {
   onSignIn: (imei: string) => void;
@@ -73,6 +75,10 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
         <Stack.Screen name="Options" component={SelectableScreen} />
 
         <Stack.Screen name="Details" component={SecondScreen} />
+
+        <Stack.Screen name="Data" component={DataScreen}/>
+
+        <Stack.Screen name="Logs" component={LogsScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

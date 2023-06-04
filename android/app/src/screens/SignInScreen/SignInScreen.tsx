@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native';
+import { Image,View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { NavigationProp } from '@react-navigation/native';
 import firebase from 'firebase/compat/app'
@@ -7,7 +7,8 @@ import 'firebase/compat/database'
 import 'firebase/compat/auth';
 import { initializeApp } from 'firebase/app' // no compat for new SDK
 import { getDatabase, ref } from 'firebase/database'
-
+//@ts-ignore
+import Logo from '../../../icons/logo.png';
 const firebaseConfig = {
   apiKey: "AIzaSyByzLUr1aKZ7E8IC4muXZvog2RTLlnf_Dc",
   authDomain: "acces-ff85a.firebaseapp.com",
@@ -118,6 +119,7 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Image source={Logo} style={styles.logo}></Image>
       <Text style={styles.label}>Enter your IMEI code:</Text>
       <TextInput
         style={styles.input}
@@ -164,6 +166,12 @@ const styles = StyleSheet.create({
   },
   button: {
 
+  },
+  logo:
+  {
+    width: 150,
+    height: 150,
+    
   },
 });
 
