@@ -1,3 +1,17 @@
+[04.06.2023] - Cata
+
+- Succesfully pulled data from Firebase and added them to DataScreen.
+- Added Data/Logs Screen.
+- improved styling for SelectableScreen
+- improved styling for SignInScreen
+
+TO BE DONE: 
+- Logs Screen
+- Sperataion from HR/Angajati
+- Improving Styling on all Screens
+
+
+
 [23.05.2023] 
 - implementation for getting other data and configuring the mobile interfaces. [TO DO]
 - implementation check for bluetooth connectivity. [TO DO]
