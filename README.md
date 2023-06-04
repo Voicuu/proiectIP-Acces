@@ -4,6 +4,8 @@
 - Added Data/Logs Screen.
 - improved styling for SelectableScreen
 - improved styling for SignInScreen
+- fixed warning Errors in entire App, no more errors to 'Details' and so on
+- fixed wrong paths for icons
 
 TO BE DONE: 
 - Logs Screen
