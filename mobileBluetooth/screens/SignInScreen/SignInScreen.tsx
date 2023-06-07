@@ -8,16 +8,9 @@ import 'firebase/compat/auth';
 import { initializeApp } from 'firebase/app' // no compat for new SDK
 import { getDatabase, ref } from 'firebase/database'
 //import BluetoothSerial from 'react-native-bluetooth-serial';
-// import 'react-native-ble-plx';
-// import { scanDevices, stopScan } from '../BluetoothConfig/BluetoothManager';
-// import 'react-native-bluetooth-clasic';
-//import { BluetoothManager, BluetoothEscposPrinter } from 'react-native-bluetooth-classic';
-import BluetoothManager from 'react-native-bluetooth-classic';
-import BluetoothEscposPrinter  from 'react-native-bluetooth-classic';
-import RNBluetoothClassic, {
-  BluetoothEventType,
-  BluetoothDevice,
-} from "react-native-bluetooth-classic";
+import 'react-native-ble-plx';
+import { scanDevices, stopScan } from '../BluetoothConfig/BluetoothManager';
+import { BleManager, Device } from 'react-native-ble-plx';
 
 const firebaseConfig = {
   apiKey: "AIzaSyByzLUr1aKZ7E8IC4muXZvog2RTLlnf_Dc",
@@ -48,8 +41,9 @@ interface SignInScreenProps {
 
 const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
   const [imei, setImei] = useState('');
+  const [bluetoothStatus, setBluetoothStatus] = useState('Bluetooth not connected');
+  const [bluetoothManager, setBluetoothManager] = useState<BleManager | null>(null);
 
-  
   const handleSignIn = () => {
     // if (imei.length === 16) { //nu e buna conditia pentru imei si nu ajunge pe navigation (schimbata din 15 in 16)
     //   // Call the onSignIn callback from the parent component or perform sign-in logic here
@@ -102,22 +96,15 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
               console.log('IMEI codes match');
               console.log('Signed in with IMEI:', imei);
               Alert.alert('Success', `Signed in successfully using the IMEI\n${imei} !`);
-              // HERE I NEED TO WRITE TO ARDUINO
-              const message = "1";
-              sendMessageToArduino(message);
-              navigation.navigate('Details'); 
+              navigation.navigate('Options'); // Replace 'AnotherScreen' with the name of the screen you want to navigate to
             } else {
               console.log('IMEI codes do not match');
-              const message = "0";
-              sendMessageToArduino(message);
               Alert.alert('Error', `IMEI Codes do not match!`);
             }
           });
         }else
         {
           console.log('User not authenticated');
-          const message = "0";
-          sendMessageToArduino(message);
         }
         } catch (error) {
           console.error(error);
@@ -129,26 +116,6 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
     // }
   };
 
-
-  const sendMessageToArduino = async ( message : String ) => {
-    
-    try {
-      const devices = await BluetoothManager.getBondedDevices();
-      const hc05Device = devices.find(device => device.id === '98:D3:81:FD:3D:20');
-      //const buffer = []; // Replace with your desired message
-      //buffer.push(1);
-      
-      //const message = "1";
-      if(hc05Device)
-      {
-        BluetoothManager.writeToDevice(hc05Device.address,message.toString());
-        console.log('Message sent to Arduino:', message);
-      }
-    } catch (error) {
-      console.error('Bluetooth write error:', error);
-    }
-  };
-
   const handleGenerateImei = async () => {
     const deviceImei = await DeviceInfo.getUniqueId();
     setImei(deviceImei);
@@ -157,54 +124,67 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
 
 //--- bluetooth configuration ---
 
- let isConnected:boolean = false;
+const handleBluetoothSearch = async () => {
+  const manager = new BleManager();
+  setBluetoothManager(manager);
 
- const handleBluetoothDisconnectArduino = async () => {
   try {
-    const devices = await BluetoothManager.getBondedDevices();
-    //const hc05Device = devices.find(device => device.name === 'Andrei’s iPhone');
-    const hc05Device = devices.find(device => device.id === '98:D3:81:FD:3D:20'); // Replace with the MAC address of your HC-05 device
-    if (hc05Device) {
-      console.log("Disconnecting from device...");
-      await BluetoothManager.disconnectFromDevice(hc05Device.address); // Disconnect from the HC-05 device
-
-      // If the disconnection is successful, update the isConnected state
-      if (!(await BluetoothManager.isDeviceConnected(hc05Device.id))) {
-        console.log("Disconnected from device");
-        navigation.navigate('Options');
-        isConnected = false;
-      } else {
-        console.error("Failed to disconnect from device");
-        // Handle disconnection error
+    // Start scanning for devices
+    manager.startDeviceScan(null, null, (error, device) => {
+      if (error) {
+        console.error('Error scanning devices:', error);
+        return;
       }
-    } else {
-      console.error("HC-05 device not found");
-      // HC-05 device not found
-    }
+
+      if (device) {
+        // Process discovered device
+        console.log('Discovered device:', device.id, device.name);
+        // Connect to the HC-05 Bluetooth module
+        if (device.name === 'HC-05') {
+          manager.stopDeviceScan(); // Stop scanning for devices
+
+          device
+            .connect()
+            .then((device: Device) => {
+              console.log('Connected to device:', device.id, device.name);
+              setBluetoothStatus('Bluetooth connected');
+              // Perform any additional actions after successful connection
+            })
+            .catch((error: any) => {
+              console.error('Error connecting to device:', error);
+            });
+        }
+      }
+    });
   } catch (error) {
-    console.error("Bluetooth disconnection error:", error);
-    // Handle Bluetooth disconnection error
+    console.error('Bluetooth search error:', error);
   }
 };
 
-const handleBluetoothDisconnectDesktop = async () => {
-  try {
-    const devices = await BluetoothManager.getBondedDevices();
-    const hc05Device = devices.find(device => device.id === 'DC:E9:94:0A:9F:26'); // Replace with the MAC address of your DESKTOP
-    if (hc05Device) {
-      console.log("Disconnecting from device...");
-      //await BluetoothManager.disconnectFromDevice(hc05Device.address); // Disconnect from the HC-05 device
-      BluetoothManager.unpairDevice(hc05Device.address); // Unpair from DESKTOP
-      navigation.navigate('Options');
-    } else {
-      console.error("DESKTOP device not found");
-      // HC-05 device not found
-      
+
+const handleBluetoothDisconnect = async () => {
+  if (bluetoothManager) {
+    const connectedDevices = await bluetoothManager.connectedDevices([]); // Get the list of connected devices
+
+    if (connectedDevices.length > 0) {
+      const connectedDevice = connectedDevices[0]; // Assuming there is only one connected device
+      console.log('Disconnecting from device:', connectedDevice.id, connectedDevice.name);
+
+      try {
+        connectedDevice
+          .cancelConnection()
+          .then(() => {
+            console.log('Disconnected from device:', connectedDevice.id, connectedDevice.name);
+            setBluetoothStatus('Bluetooth disconnected');
+            // Perform any additional actions after successful disconnection
+          })
+          .catch((error: any) => {
+            console.error('Error disconnecting from device:', error);
+          });
+      } catch (error) {
+        console.error('Bluetooth disconnect error:', error);
+      }
     }
-  } catch (error) {
-    console.error("Bluetooth disconnection error:", error);
-    // Handle Bluetooth disconnection error
-    navigation.navigate('Home');
   }
 };
 
@@ -212,40 +192,21 @@ return (
   <View style={styles.container}>
     <Text style={styles.label}>Enter your IMEI code:</Text>
     {/* IMEI input field... */}
-    <View style={styles.input}>
-       <TextInput
-         style={styles.input}
-         
-         placeholder="15-digit IMEI code"
-         maxLength={16}
-         keyboardType="default"
-                  editable={false}
-         onChangeText={setImei}
-         value={imei}
-       />
-       <View style={styles.buttonContainer}>
-       <View style={styles.space}>
+    <View style={styles.buttonContainer}>
       <Button title="Sign In" onPress={handleSignIn} />
-      </View>
-      <View style={styles.space}>
       <Button title="Generate IMEI" onPress={handleGenerateImei} />
-      </View>
-
-      <View style={styles.space}>
-        <Button
-          title="Disconnect Bluetooth from Arduino"
-          onPress={handleBluetoothDisconnectArduino}
-        />
-        </View>
-        <View style={styles.space}>
-        <Button
-          title="Disconnect Bluetooth from Desktop"
-          onPress={handleBluetoothDisconnectDesktop}
-        />
-        </View>
+      <Button
+        title="Search Bluetooth"
+        onPress={handleBluetoothSearch}
+        disabled={bluetoothStatus === 'Bluetooth connected'}
+      />
+      <Button
+        title="Disconnect Bluetooth"
+        onPress={handleBluetoothDisconnect}
+        disabled={bluetoothStatus === 'Bluetooth not connected'}
+      />
     </View>
-    </View>
-    <Text style={styles.bluetoothStatus}></Text>
+    <Text style={styles.bluetoothStatus}>{bluetoothStatus}</Text>
   </View>
 );
 };
@@ -281,13 +242,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   label: {
-    color: "blue",
-    paddingHorizontal:10,
     fontSize: 18,
     marginBottom: 10,
   },
   input: {
-    color: "red",
     width: '100%',
     borderWidth: 1,
     borderColor: '#ccc',
@@ -297,9 +255,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    marginBottom: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
     marginTop: 10, 
   },
@@ -308,19 +265,6 @@ const styles = StyleSheet.create({
   },
   bluetoothStatus:{
 
-  },
-  space: {
-    marginVertical: 8, // Adjust the value as needed
-  },
-  discoveredDevicesContainer: {
-    marginTop: 20,
-  },
-  deviceItem: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    marginBottom: 10,
   },
 });
 

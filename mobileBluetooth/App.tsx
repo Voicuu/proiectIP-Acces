@@ -3,13 +3,11 @@ import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { Alert } from 'react-native';
 import React from 'react';
-import SecondScreen from './android/app/src/screens/SecondScreen/SecondScreen';
+import SecondScreen from './screens/SecondScreen/SecondScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignInScreen from './android/app/src/screens/SignInScreen/SignInScreen'
-import SelectableScreen from './android/app/src/screens/SelectableScreen/SelectableScreen';
-import BluetoothScreenArduino from './android/app/src/screens/BluetoothScreenArduino/BluetoothScreenArduino';
-import BluetoothScreenDesktop from './android/app/src/screens/BluetoothScreenDesktop/BluetoothScreenDesktop';
+import SignInScreen from './screens/SignInScreen/SignInScreen';
+import SelectableScreen from './screens/SelectableScreen/SelectableScreen'
 import auth from '@react-native-firebase/auth';
 import { Database } from 'firebase/database';
 //import firebase from './firebase';
@@ -69,17 +67,11 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
   return (
     
     <NavigationContainer>
-        <Stack.Navigator>
-
-
-        <Stack.Screen name="Options" component={SelectableScreen} />
-
-        <Stack.Screen name="BluetoothScreenArduino" component={BluetoothScreenArduino} />
-
-        <Stack.Screen name="BluetoothScreenDesktop" component={BluetoothScreenDesktop} />
-
+      <Stack.Navigator>
         <Stack.Screen name="Home" component={SignInScreen} />
       
+        <Stack.Screen name="Options" component={SelectableScreen} />
+
         <Stack.Screen name="Details" component={SecondScreen} />
       </Stack.Navigator>
     </NavigationContainer>

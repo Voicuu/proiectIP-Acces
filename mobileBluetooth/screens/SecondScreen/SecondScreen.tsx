@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
 
-const logo = require('C:/Users/andre/Projects/Backup MobileApp_BT/proiectIP-Acces/android/app/icons/logo.png');
+const logo = require('C:/Users/andre/Projects/MobileApp/proiectIP-Acces/android/app/icons/logo.png');
 
 const SecondScreen = () => {
   const [input1, setInput1] = useState('');
