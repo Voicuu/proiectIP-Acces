@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 import { NavigationProp } from '@react-navigation/native';
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
+import { initializeApp } from 'firebase/app'; // no compat for new SDK
+import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { initializeApp } from 'firebase/app' // no compat for new SDK
-import { getDatabase, ref } from 'firebase/database'
+import 'firebase/compat/database';
+import { getDatabase, ref } from 'firebase/database';
+import React, { useState } from 'react';
+import { Alert, Button, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 //import BluetoothSerial from 'react-native-bluetooth-serial';
 // import 'react-native-ble-plx';
 // import { scanDevices, stopScan } from '../BluetoothConfig/BluetoothManager';
 // import 'react-native-bluetooth-clasic';
 //import { BluetoothManager, BluetoothEscposPrinter } from 'react-native-bluetooth-classic';
-import BluetoothManager from 'react-native-bluetooth-classic';
-import BluetoothEscposPrinter  from 'react-native-bluetooth-classic';
-import RNBluetoothClassic, {
-  BluetoothEventType,
+import {
   BluetoothDevice,
-} from "react-native-bluetooth-classic";
+  default as BluetoothEscposPrinter,
+  BluetoothEventType,
+  default as BluetoothManager,
+  default as RNBluetoothClassic,
+} from 'react-native-bluetooth-classic';
 
 const firebaseConfig = {
   apiKey: "AIzaSyByzLUr1aKZ7E8IC4muXZvog2RTLlnf_Dc",
@@ -45,6 +46,7 @@ const password: string = 'password123';
 interface SignInScreenProps {
   navigation: NavigationProp<any>;
 }
+const logo = require('../../../icons/logo.png');
 
 const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
   const [imei, setImei] = useState('');
@@ -209,44 +211,66 @@ const handleBluetoothDisconnectDesktop = async () => {
 };
 
 return (
-  <View style={styles.container}>
-    <Text style={styles.label}>Enter your IMEI code:</Text>
-    {/* IMEI input field... */}
-    <View style={styles.input}>
-       <TextInput
-         style={styles.input}
-         
-         placeholder="15-digit IMEI code"
-         maxLength={16}
-         keyboardType="default"
-                  editable={false}
-         onChangeText={setImei}
-         value={imei}
-       />
-       <View style={styles.buttonContainer}>
-       <View style={styles.space}>
-      <Button title="Sign In" onPress={handleSignIn} />
-      </View>
-      <View style={styles.space}>
-      <Button title="Generate IMEI" onPress={handleGenerateImei} />
-      </View>
+  <ImageBackground
+      source={require('../../../icons/background.jpg')}
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <View style={styles.container}>
+        <Image source={logo} style={styles.logoStyle}></Image>
+        <Text style={styles.label}>Enter your IMEI code:</Text>
+        
+        <TextInput
+          style={styles.input}
+          placeholder="15-digit IMEI code"
+          maxLength={16}
+          keyboardType="default"
+          editable={false}
+          onChangeText={setImei}
+          value={imei}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={handleSignIn}
+          >
+            <Text style={styles.buttonText}>
+              Sign In
+            </Text>
+          </TouchableOpacity>
 
-      <View style={styles.space}>
-        <Button
-          title="Disconnect Bluetooth from Arduino"
-          onPress={handleBluetoothDisconnectArduino}
-        />
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={handleGenerateImei}
+          >
+            <Text style={styles.buttonText}>
+              Generate IMEI
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={handleBluetoothDisconnectArduino}
+          >
+            <Text style={styles.buttonText}>
+              Disconnect Bluetooth from Arduino
+            </Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={handleBluetoothDisconnectDesktop}
+          >
+            <Text style={styles.buttonText}>
+              Disconnect Bluetooth from Desktop
+            </Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.space}>
-        <Button
-          title="Disconnect Bluetooth from Desktop"
-          onPress={handleBluetoothDisconnectDesktop}
-        />
-        </View>
-    </View>
-    </View>
-    <Text style={styles.bluetoothStatus}></Text>
-  </View>
+      </View>
+    </ImageBackground>
 );
 };
 
@@ -280,21 +304,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  logoStyle: {
+    marginTop: 25,
+    marginBottom: 25,
+  },
   label: {
-    color: "blue",
     paddingHorizontal:10,
     fontSize: 18,
     marginBottom: 10,
+    width: 250,
+    textAlign: 'center',
+    flex: 1
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
   input: {
     color: "red",
-    width: '100%',
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
     marginBottom: 20,
     fontSize: 16,
     textAlign: 'center',
+    width: 300,
   },
   buttonContainer: {
     flexDirection: 'column',
@@ -304,23 +338,11 @@ const styles = StyleSheet.create({
     marginTop: 10, 
   },
   button: {
-  
-  },
-  bluetoothStatus:{
-
-  },
-  space: {
-    marginVertical: 8, // Adjust the value as needed
-  },
-  discoveredDevicesContainer: {
-    marginTop: 20,
-  },
-  deviceItem: {
+    backgroundColor: 'lightblue',
     padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 10,
     marginBottom: 10,
+    width: 300,
   },
 });
 

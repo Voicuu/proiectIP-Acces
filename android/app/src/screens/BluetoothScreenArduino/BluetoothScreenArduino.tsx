@@ -1,10 +1,11 @@
-import BluetoothManager from 'react-native-bluetooth-classic';
-import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 import { NavigationProp } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { Alert, Button, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import BluetoothManager from 'react-native-bluetooth-classic';
+import DeviceInfo from 'react-native-device-info';
 
 let isConnected:boolean = false;
+const logo = require('../../../icons/logo.png');
 
 interface BluetoothScreenProps {
     navigation: NavigationProp<any>;
@@ -56,24 +57,26 @@ const handleBluetoothConnect = async () => {
   
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Connect to the Arduino via Bluetooth</Text>
-      {/* IMEI input field... */}
-      <View style={styles.input}>
+    <ImageBackground
+      source={require('../../../icons/background.jpg')}
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Image source={logo} style={styles.logoStyle}></Image>
+      <View style={styles.container}>
+        <Text style={styles.label}>Conectare la Arduino</Text>
 
-         <View style={styles.buttonContainer}>
-
-        <View style={styles.space}>
-        <Button
-          title="Connect to Arduino"
+        <TouchableOpacity 
+          style={styles.button}
           onPress={handleBluetoothConnect}
-        />
-        </View>
-        
+        >
+          <Text style={styles.buttonText}>Conecteaza la Arduino</Text>
+        </TouchableOpacity>
       </View>
-      </View>
-      <Text style={styles.bluetoothStatus}></Text>
-    </View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
@@ -83,11 +86,16 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       padding: 20,
     },
+    logoStyle: {
+      marginTop: 45,
+    },
     label: {
-      color: "blue",
       paddingHorizontal:10,
       fontSize: 18,
       marginBottom: 10,
+      flex: 1,
+      textAlign: 'center',
+      width: 250,
     },
     input: {
       width: '100%',
@@ -98,31 +106,15 @@ const styles = StyleSheet.create({
       fontSize: 16,
       textAlign: 'center',
     },
-    buttonContainer: {
-      flexDirection: 'column',
-      justifyContent: 'space-evenly',
-      marginBottom: 20,
-      width: '100%',
-      marginTop: 10, 
-    },
     button: {
-    
-    },
-    bluetoothStatus:{
-  
-    },
-    space: {
-      marginVertical: 8, // Adjust the value as needed
-    },
-    discoveredDevicesContainer: {
-      marginTop: 20,
-    },
-    deviceItem: {
+      backgroundColor: 'lightblue',
       padding: 10,
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      marginBottom: 10,
+      borderRadius: 10,
+      width: 300,
+    },
+    buttonText: {
+      color: 'white',
+      textAlign: 'center',
     },
   });
 

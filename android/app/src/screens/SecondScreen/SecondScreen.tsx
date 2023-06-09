@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
+import { Button, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-const logo = require('C:/Users/andre/Projects/Backup MobileApp_BT/proiectIP-Acces/android/app/icons/logo.png');
+const logo = require('../../../icons/logo.png');
+
 
 const SecondScreen = () => {
   const [input1, setInput1] = useState('');
@@ -22,29 +23,44 @@ const SecondScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={logo}></Image>
-      <Text style={styles.label}>Nume si prenume</Text>
-      <TextInput
-        style={styles.input1}
-        value={input1}
-        onChangeText={setInput1}
-      />
+    <ImageBackground
+      source={require('../../../icons/background.jpg')}
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <View style={styles.container}>
+        <Image source={logo} style={styles.logoStyle}></Image>
+        <Text style={styles.label}>Nume si prenume</Text>
+        <TextInput
+          style={styles.input}
+          value={input1}
+          onChangeText={setInput1}
+        />
 
-      {/* Repeat the above pattern for the remaining textboxes */}
+        {/* Repeat the above pattern for the remaining textboxes */}
 
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Logs" 
+        <TouchableOpacity 
+          style={styles.button}
           onPress={handleButton1Press}
-        />
+        >
+          <Text style={styles.buttonText}>
+            Logs
+          </Text>
+        </TouchableOpacity>
 
-        <Button
-          title="Orar/Date ale utilizatorului/Stare poarta"
+        <TouchableOpacity 
+          style={styles.button}
           onPress={handleButton2Press}
-        />
+        >
+          <Text style={styles.buttonText}>
+            Orar/Date ale utilizatorului/Stare poarta
+          </Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -52,45 +68,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoStyle: {
+    marginTop: -345,
+  },
+  button: {
+    backgroundColor: 'lightblue',
+    padding: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+    width: 300,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
   label: {
-    position: "absolute",
-    left:26,
-    top:164,
-    width:161,
-    color: "rgba(0,0,0,1)",
-    fontSize: 12,
+    fontSize: 18,
     letterSpacing: 0,
     textAlign:"left",
     fontStyle: "normal",
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  input1: {
-    position: "absolute",
-    fontSize: 12,
-    left: 16,
-    top: 185,
-    width: 323,
-    height: 33,
-    borderColor: 'gray',
+  input: {
+    fontSize: 18,
+    width: 300,
+    borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 16,
-    paddingHorizontal: 4,
-  },
-  buttonContainer: {
-    position: "absolute",
-    left: 53,
-    top:550,
-    width:102,
-    height:40,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    shadowOpacity:50,
-    gap:100,
-    marginTop: 16,
   },
 });
+
 
 export default SecondScreen;
 
