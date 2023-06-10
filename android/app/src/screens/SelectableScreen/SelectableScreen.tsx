@@ -16,8 +16,10 @@ const SelectableScreen: React.FC = () => {
     setSelectedIcon(icon);
     
     if (icon === 'walking') {
+      //@ts-ignore
       navigation.navigate('BluetoothScreenDesktop');
     } else if (icon === 'car') {
+      //@ts-ignore
       navigation.navigate('BluetoothScreenArduino');
     }
   };

@@ -52,6 +52,7 @@ const handleBluetoothConnect = async () => {
       console.error("Bluetooth connection error:", error);
       // Handle Bluetooth connection error
     }
+    
   };
 
   

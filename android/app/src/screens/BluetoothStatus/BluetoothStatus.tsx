@@ -3,6 +3,7 @@ import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 const logo = require('../../../icons/logo.png');
 
+//@ts-ignore
 const BluetoothStatus = ({ isConnected }) => {
   return (
     <ImageBackground

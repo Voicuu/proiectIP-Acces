@@ -23,7 +23,7 @@ const handleBluetoothConnect = async () => {
       const devices = await BluetoothManager.getBondedDevices(); // Get a list of available Bluetooth devices
       console.log(devices);
       
-      const hc05Device = devices.find(device => device.id === 'D8:3B:BF:E6:08:51');
+      const hc05Device = devices.find(device => device.id === 'B8:90:47:1A:52:D6');
       //const hc05Device = devices.find(device => device.id === 'DC:E9:94:0A:9F:26'); // Replace '98:D3:81:FD:3D:20' with the MAC address of your HC-05 device
       if(isPaired==true)
       {
@@ -71,6 +71,7 @@ const handleBluetoothConnect = async () => {
       console.error("Bluetooth connection error:", error);
       // Handle Bluetooth connection error
     }
+   
   };
 
 

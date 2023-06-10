@@ -12,6 +12,8 @@ import BluetoothScreenArduino from './android/app/src/screens/BluetoothScreenArd
 import BluetoothScreenDesktop from './android/app/src/screens/BluetoothScreenDesktop/BluetoothScreenDesktop';
 import auth from '@react-native-firebase/auth';
 import { Database } from 'firebase/database';
+import DataScreen from './android/app/src/screens/DataScreen/DataScreen'
+import LogsScreen from './android/app/src/screens/LogsScreen/LogsScreen'
 //import firebase from './firebase';
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/database'
@@ -81,6 +83,10 @@ const SignIn: React.FC<SignInProps> = ({ onSignIn }) => {
         <Stack.Screen name="Home" component={SignInScreen} />
       
         <Stack.Screen name="Details" component={SecondScreen} />
+
+        <Stack.Screen name="Data" component={DataScreen} />
+
+        <Stack.Screen name="Logs" component={LogsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

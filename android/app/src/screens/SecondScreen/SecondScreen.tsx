@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
+import DataScreen from '../DataScreen/DataScreen';
+import LogsScreen from '../LogsScreen/LogsScreen';
+import { ref, push, set,child, get } from 'firebase/database';
+import {database} from '../../../../../firebase';
+import {Alert} from 'react-native';
 const logo = require('../../../icons/logo.png');
 
-
-const SecondScreen = () => {
+//@ts-ignore
+const SecondScreen = ( {navigation}) => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
@@ -14,13 +18,46 @@ const SecondScreen = () => {
   const [input7, setInput7] = useState('');
   const [input8, setInput8] = useState('');
 
-  const handleButton1Press = () => {
-    // Handle button 1 press logic here
+  const handleButton2Press = async () => {
+    const databaseRef = ref(database, 'Angajati');
+    const snapshot = await get(databaseRef);
+    const fetchedNames = Object.values(snapshot.val()).map((person: any) => person.Nume);
+  
+    if (!fetchedNames.includes(input1)) {
+      Alert.alert('Name does not exist!');
+      return;
+    }
+  
+    navigation.navigate('Data', { name: input1 });
   };
 
-  const handleButton2Press = () => {
-    // Handle button 2 press logic here
+  const handleButton1Press = async () => {
+    const now = new Date();
+    const formattedDateTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+  
+    const databaseRef = ref(database, 'Angajati');
+    const snapshot = await get(databaseRef);
+    const personData = Object.values(snapshot.val()).find((person: any) => person.Nume === input1);
+  
+    if (!personData) {
+      Alert.alert('Person not found!');
+      return;
+    }
+  
+    const logEntry = {
+      CNP: (personData as any).CNP,
+      DateTime: formattedDateTime,
+      Direction: 'Intrare',
+    };
+  
+    const logsRef = ref(database, 'Logs');
+    const newLogRef = push(logsRef);
+    await set(newLogRef, logEntry);
+  
+    Alert.alert('Logs have been sent!');
   };
+  
+  
 
   return (
     <ImageBackground
