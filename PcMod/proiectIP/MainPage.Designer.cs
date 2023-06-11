@@ -39,11 +39,9 @@
             this.labelGateState = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelWay = new System.Windows.Forms.Label();
             this.labelCarNr = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.pictureBoxEmployeePicture = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBoxangajatPicture = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDenyAcces = new System.Windows.Forms.Button();
@@ -53,7 +51,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGate)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployeePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxangajatPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // pbBackground
@@ -74,11 +72,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(299, 11);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(337, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(322, 42);
+            this.label1.Size = new System.Drawing.Size(324, 50);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pagina principală";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -104,6 +102,7 @@
             this.groupBox2.Controls.Add(this.pictureBoxGate);
             this.groupBox2.Controls.Add(this.labelGateState);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(16, 92);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -130,7 +129,7 @@
             this.labelGateState.Location = new System.Drawing.Point(100, 62);
             this.labelGateState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelGateState.Name = "labelGateState";
-            this.labelGateState.Size = new System.Drawing.Size(38, 16);
+            this.labelGateState.Size = new System.Drawing.Size(38, 17);
             this.labelGateState.TabIndex = 10;
             this.labelGateState.Text = "idle...";
             // 
@@ -140,19 +139,18 @@
             this.label5.Location = new System.Drawing.Point(8, 62);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 16);
+            this.label5.Size = new System.Drawing.Size(84, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Stare poartă:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.labelWay);
             this.groupBox1.Controls.Add(this.labelCarNr);
             this.groupBox1.Controls.Add(this.labelName);
-            this.groupBox1.Controls.Add(this.pictureBoxEmployeePicture);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.pictureBoxangajatPicture);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(520, 92);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -162,106 +160,91 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalii angajat:";
             // 
-            // labelWay
-            // 
-            this.labelWay.AutoSize = true;
-            this.labelWay.Location = new System.Drawing.Point(68, 202);
-            this.labelWay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelWay.Name = "labelWay";
-            this.labelWay.Size = new System.Drawing.Size(44, 16);
-            this.labelWay.TabIndex = 15;
-            this.labelWay.Text = "label9";
-            // 
             // labelCarNr
             // 
             this.labelCarNr.AutoSize = true;
-            this.labelCarNr.Location = new System.Drawing.Point(140, 153);
+            this.labelCarNr.Location = new System.Drawing.Point(140, 173);
             this.labelCarNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCarNr.Name = "labelCarNr";
-            this.labelCarNr.Size = new System.Drawing.Size(44, 16);
+            this.labelCarNr.Size = new System.Drawing.Size(13, 17);
             this.labelCarNr.TabIndex = 14;
-            this.labelCarNr.Text = "label8";
+            this.labelCarNr.Text = "-";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(76, 103);
+            this.labelName.Location = new System.Drawing.Point(76, 123);
             this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(44, 16);
+            this.labelName.Size = new System.Drawing.Size(13, 17);
             this.labelName.TabIndex = 13;
-            this.labelName.Text = "label7";
+            this.labelName.Text = "-";
             // 
-            // pictureBoxEmployeePicture
+            // pictureBoxangajatPicture
             // 
-            this.pictureBoxEmployeePicture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBoxEmployeePicture.Location = new System.Drawing.Point(300, 103);
-            this.pictureBoxEmployeePicture.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxEmployeePicture.Name = "pictureBoxEmployeePicture";
-            this.pictureBoxEmployeePicture.Size = new System.Drawing.Size(133, 117);
-            this.pictureBoxEmployeePicture.TabIndex = 12;
-            this.pictureBoxEmployeePicture.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 202);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 16);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Sens:";
+            this.pictureBoxangajatPicture.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureBoxangajatPicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxangajatPicture.Image")));
+            this.pictureBoxangajatPicture.Location = new System.Drawing.Point(300, 103);
+            this.pictureBoxangajatPicture.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxangajatPicture.Name = "pictureBoxangajatPicture";
+            this.pictureBoxangajatPicture.Size = new System.Drawing.Size(133, 117);
+            this.pictureBoxangajatPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxangajatPicture.TabIndex = 12;
+            this.pictureBoxangajatPicture.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 153);
+            this.label3.Location = new System.Drawing.Point(8, 173);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 16);
+            this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Număr mașină:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 103);
+            this.label2.Location = new System.Drawing.Point(8, 123);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 16);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Nume:";
             // 
             // btnDenyAcces
             // 
             this.btnDenyAcces.BackColor = System.Drawing.Color.Red;
-            this.btnDenyAcces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDenyAcces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDenyAcces.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDenyAcces.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDenyAcces.Location = new System.Drawing.Point(208, 438);
             this.btnDenyAcces.Margin = new System.Windows.Forms.Padding(4);
             this.btnDenyAcces.Name = "btnDenyAcces";
             this.btnDenyAcces.Size = new System.Drawing.Size(167, 53);
             this.btnDenyAcces.TabIndex = 7;
-            this.btnDenyAcces.Text = "DENY ACCESS";
+            this.btnDenyAcces.Text = "INTERZICERE ACCES";
             this.btnDenyAcces.UseVisualStyleBackColor = false;
             this.btnDenyAcces.Click += new System.EventHandler(this.btnDenyAcces_Click);
             // 
             // btnLogs
             // 
             this.btnLogs.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnLogs.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogs.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnLogs.Location = new System.Drawing.Point(16, 438);
             this.btnLogs.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogs.Name = "btnLogs";
             this.btnLogs.Size = new System.Drawing.Size(167, 53);
             this.btnLogs.TabIndex = 8;
-            this.btnLogs.Text = "Logs";
+            this.btnLogs.Text = "LOGS";
             this.btnLogs.UseVisualStyleBackColor = false;
             this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
             // 
             // btnDisconnectPortar
             // 
+            this.btnDisconnectPortar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisconnectPortar.Location = new System.Drawing.Point(856, 438);
             this.btnDisconnectPortar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDisconnectPortar.Name = "btnDisconnectPortar";
@@ -285,12 +268,13 @@
             this.Controls.Add(this.oraCurenta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbBackground);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "MainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Page";
+            this.Text = "Platforma PORTAR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainPage_FormClosing);
             this.Load += new System.EventHandler(this.mainPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
@@ -299,7 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGate)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployeePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxangajatPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,15 +297,13 @@
         private System.Windows.Forms.Timer timerOraCurenta;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBoxEmployeePicture;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBoxangajatPicture;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDenyAcces;
         private System.Windows.Forms.Button btnLogs;
         private System.Windows.Forms.Label labelGateState;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelWay;
         private System.Windows.Forms.Label labelCarNr;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.PictureBox pictureBoxGate;

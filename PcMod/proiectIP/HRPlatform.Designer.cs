@@ -54,7 +54,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonAddEmployee = new System.Windows.Forms.Button();
+            this.buttonAddangajat = new System.Windows.Forms.Button();
             this.btnDisconnectHR = new System.Windows.Forms.Button();
             this.oraCurenta2 = new System.Windows.Forms.Label();
             this.timerOraCurenta2 = new System.Windows.Forms.Timer(this.components);
@@ -87,6 +87,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 80);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -101,7 +102,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(434, 266);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 16);
+            this.label11.Size = new System.Drawing.Size(85, 17);
             this.label11.TabIndex = 19;
             this.label11.Text = "Cod QR App:";
             // 
@@ -110,15 +111,15 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(434, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 16);
+            this.label8.Size = new System.Drawing.Size(39, 17);
             this.label8.TabIndex = 18;
             this.label8.Text = "Poză:";
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(564, 166);
+            this.btnBrowse.Location = new System.Drawing.Point(553, 166);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(87, 30);
+            this.btnBrowse.Size = new System.Drawing.Size(98, 35);
             this.btnBrowse.TabIndex = 17;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -126,7 +127,7 @@
             // 
             // pictureBoxPoza
             // 
-            this.pictureBoxPoza.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxPoza.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBoxPoza.Location = new System.Drawing.Point(536, 44);
             this.pictureBoxPoza.Name = "pictureBoxPoza";
             this.pictureBoxPoza.Size = new System.Drawing.Size(135, 116);
@@ -139,15 +140,15 @@
             this.textBoxEmail.Location = new System.Drawing.Point(176, 346);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(226, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(226, 25);
             this.textBoxEmail.TabIndex = 16;
             // 
             // buttonGenerateQRCode
             // 
-            this.buttonGenerateQRCode.Location = new System.Drawing.Point(564, 376);
+            this.buttonGenerateQRCode.Location = new System.Drawing.Point(553, 376);
             this.buttonGenerateQRCode.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGenerateQRCode.Name = "buttonGenerateQRCode";
-            this.buttonGenerateQRCode.Size = new System.Drawing.Size(87, 30);
+            this.buttonGenerateQRCode.Size = new System.Drawing.Size(98, 35);
             this.buttonGenerateQRCode.TabIndex = 3;
             this.buttonGenerateQRCode.Text = "Generate";
             this.buttonGenerateQRCode.UseVisualStyleBackColor = true;
@@ -158,12 +159,12 @@
             this.textBoxAccesRights.Location = new System.Drawing.Point(176, 303);
             this.textBoxAccesRights.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAccesRights.Name = "textBoxAccesRights";
-            this.textBoxAccesRights.Size = new System.Drawing.Size(226, 22);
+            this.textBoxAccesRights.Size = new System.Drawing.Size(226, 25);
             this.textBoxAccesRights.TabIndex = 15;
             // 
             // pictureBoxQRCode
             // 
-            this.pictureBoxQRCode.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxQRCode.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBoxQRCode.Location = new System.Drawing.Point(536, 252);
             this.pictureBoxQRCode.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxQRCode.Name = "pictureBoxQRCode";
@@ -177,7 +178,7 @@
             this.textBoxCarNr.Location = new System.Drawing.Point(176, 260);
             this.textBoxCarNr.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCarNr.Name = "textBoxCarNr";
-            this.textBoxCarNr.Size = new System.Drawing.Size(226, 22);
+            this.textBoxCarNr.Size = new System.Drawing.Size(226, 25);
             this.textBoxCarNr.TabIndex = 14;
             // 
             // textBoxSecurityCode
@@ -185,7 +186,7 @@
             this.textBoxSecurityCode.Location = new System.Drawing.Point(176, 217);
             this.textBoxSecurityCode.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSecurityCode.Name = "textBoxSecurityCode";
-            this.textBoxSecurityCode.Size = new System.Drawing.Size(226, 22);
+            this.textBoxSecurityCode.Size = new System.Drawing.Size(226, 25);
             this.textBoxSecurityCode.TabIndex = 13;
             // 
             // textBoxDivizie
@@ -193,7 +194,7 @@
             this.textBoxDivizie.Location = new System.Drawing.Point(176, 174);
             this.textBoxDivizie.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDivizie.Name = "textBoxDivizie";
-            this.textBoxDivizie.Size = new System.Drawing.Size(226, 22);
+            this.textBoxDivizie.Size = new System.Drawing.Size(226, 25);
             this.textBoxDivizie.TabIndex = 12;
             // 
             // textBoxNrLegimitatie
@@ -201,7 +202,7 @@
             this.textBoxNrLegimitatie.Location = new System.Drawing.Point(176, 130);
             this.textBoxNrLegimitatie.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNrLegimitatie.Name = "textBoxNrLegimitatie";
-            this.textBoxNrLegimitatie.Size = new System.Drawing.Size(226, 22);
+            this.textBoxNrLegimitatie.Size = new System.Drawing.Size(226, 25);
             this.textBoxNrLegimitatie.TabIndex = 11;
             // 
             // textBoxName
@@ -209,7 +210,7 @@
             this.textBoxName.Location = new System.Drawing.Point(176, 87);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(226, 22);
+            this.textBoxName.Size = new System.Drawing.Size(226, 25);
             this.textBoxName.TabIndex = 10;
             // 
             // textBoxCNP
@@ -217,7 +218,7 @@
             this.textBoxCNP.Location = new System.Drawing.Point(176, 44);
             this.textBoxCNP.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCNP.Name = "textBoxCNP";
-            this.textBoxCNP.Size = new System.Drawing.Size(226, 22);
+            this.textBoxCNP.Size = new System.Drawing.Size(226, 25);
             this.textBoxCNP.TabIndex = 9;
             // 
             // label9
@@ -226,7 +227,7 @@
             this.label9.Location = new System.Drawing.Point(8, 352);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 16);
+            this.label9.Size = new System.Drawing.Size(42, 17);
             this.label9.TabIndex = 7;
             this.label9.Text = "Email:";
             // 
@@ -236,7 +237,7 @@
             this.label10.Location = new System.Drawing.Point(8, 309);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 16);
+            this.label10.Size = new System.Drawing.Size(99, 17);
             this.label10.TabIndex = 6;
             this.label10.Text = "Drept de acces:";
             // 
@@ -246,7 +247,7 @@
             this.label5.Location = new System.Drawing.Point(8, 266);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 16);
+            this.label5.Size = new System.Drawing.Size(71, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Nr mașină:";
             // 
@@ -256,9 +257,9 @@
             this.label6.Location = new System.Drawing.Point(8, 223);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 16);
+            this.label6.Size = new System.Drawing.Size(95, 17);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Cod securitate";
+            this.label6.Text = "Cod securitate:";
             // 
             // label7
             // 
@@ -266,7 +267,7 @@
             this.label7.Location = new System.Drawing.Point(8, 180);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 16);
+            this.label7.Size = new System.Drawing.Size(48, 17);
             this.label7.TabIndex = 3;
             this.label7.Text = "Divizia:";
             // 
@@ -276,7 +277,7 @@
             this.label4.Location = new System.Drawing.Point(8, 137);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 16);
+            this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Nr legitimație:";
             // 
@@ -286,7 +287,7 @@
             this.label3.Location = new System.Drawing.Point(8, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 16);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Nume:";
             // 
@@ -296,31 +297,32 @@
             this.label2.Location = new System.Drawing.Point(8, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 16);
+            this.label2.Size = new System.Drawing.Size(36, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "CNP:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(214, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(263, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(322, 42);
+            this.label1.Size = new System.Drawing.Size(324, 50);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pagina principală";
             // 
-            // buttonAddEmployee
+            // buttonAddangajat
             // 
-            this.buttonAddEmployee.Location = new System.Drawing.Point(13, 522);
-            this.buttonAddEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonAddEmployee.Name = "buttonAddEmployee";
-            this.buttonAddEmployee.Size = new System.Drawing.Size(151, 55);
-            this.buttonAddEmployee.TabIndex = 4;
-            this.buttonAddEmployee.Text = "Adauga";
-            this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            this.buttonAddangajat.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddangajat.Location = new System.Drawing.Point(13, 522);
+            this.buttonAddangajat.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddangajat.Name = "buttonAddangajat";
+            this.buttonAddangajat.Size = new System.Drawing.Size(151, 55);
+            this.buttonAddangajat.TabIndex = 4;
+            this.buttonAddangajat.Text = "Adaugă";
+            this.buttonAddangajat.UseVisualStyleBackColor = true;
+            this.buttonAddangajat.Click += new System.EventHandler(this.buttonAddangajat_Click);
             // 
             // btnDisconnectHR
             // 
@@ -356,14 +358,17 @@
             this.ClientSize = new System.Drawing.Size(835, 592);
             this.Controls.Add(this.oraCurenta2);
             this.Controls.Add(this.btnDisconnectHR);
-            this.Controls.Add(this.buttonAddEmployee);
+            this.Controls.Add(this.buttonAddangajat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "HRPlatform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HR_Platform";
+            this.Text = "Platforma HR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HRPlatform_FormClosing);
             this.Load += new System.EventHandler(this.HRPlatform_Load);
             this.groupBox1.ResumeLayout(false);
@@ -397,7 +402,7 @@
         private System.Windows.Forms.TextBox textBoxNrLegimitatie;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxCNP;
-        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Button buttonAddangajat;
         private System.Windows.Forms.Button btnDisconnectHR;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;

@@ -50,7 +50,7 @@ namespace proiectIP
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
 
             // Introdu mesajul pe care dorești să-l codifici în QR code
-            string message = "https://facebook.com";
+            string message = "https://filetransfer.io/data-package/wenZqKTt#link";
 
             // Adaugă un timestamp la mesaj pentru a genera un cod QR unic de fiecare dată
             message += DateTime.Now.ToString("yyyyMMddHHmmssfff");
@@ -111,7 +111,7 @@ namespace proiectIP
         }
 
 
-        private async void buttonAddEmployee_Click(object sender, EventArgs e)
+        private async void buttonAddangajat_Click(object sender, EventArgs e)
         {
             // Check if all the required fields are completed and the CNP has 13 characters
             if (string.IsNullOrEmpty(textBoxCNP.Text) || textBoxCNP.Text.Length != 13 ||
@@ -141,7 +141,7 @@ namespace proiectIP
                     string fileName = $"{Guid.NewGuid().ToString()}.png";
                     string imageUrl = await UploadImageToFirebaseStorage(selectedImageData, fileName);
 
-                    // Create a new Employee object with the data from the TextBoxes and the image URL
+                    // Create a new angajat object with the data from the TextBoxes and the image URL
                     Angajat angajatNou = new()
                     {
                         CNP = textBoxCNP.Text,
@@ -155,7 +155,7 @@ namespace proiectIP
                         Poza = imageUrl
                     };
 
-                    // Save the new Employee object to the Firebase Realtime Database
+                    // Save the new angajat object to the Firebase Realtime Database
                     var firebaseClient = FirebaseConfig.GetFirebaseClient();
                     await firebaseClient.Child("Angajati").Child(angajatNou.Nume).PutAsync(angajatNou);
                 });
