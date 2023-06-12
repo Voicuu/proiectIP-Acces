@@ -49,11 +49,8 @@ namespace proiectIP
             // Creează o instanță a generatorului de coduri QR
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
 
-            // Introdu mesajul pe care dorești să-l codifici în QR code
-            string message = "https://filetransfer.io/data-package/wenZqKTt#link";
-
-            // Adaugă un timestamp la mesaj pentru a genera un cod QR unic de fiecare dată
-            message += DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            // Introdu link-ul pe care dorești să-l codifici în QR code
+            string message = "https://we.tl/t-7BniEm31M4";
 
             // Generează datele QR code-ului
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(message, QRCodeGenerator.ECCLevel.Q);
@@ -67,8 +64,6 @@ namespace proiectIP
                 pictureBoxQRCode.Image = new Bitmap(qrCodeImage);
             }
         }
-
-
 
         private void btnDisconnectHR_Click(object sender, EventArgs e)
         {
